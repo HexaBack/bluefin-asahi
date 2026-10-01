@@ -51,10 +51,9 @@ jobs:
     # branch so it cannot bypass the candidate-digest release path by rebuilding
     # and publishing from stable.
     if: github.event_name != 'workflow_dispatch' || github.ref_name == github.event.repository.default_branch
-    # Pinned to 24.04: projectbluefin/actions' setup-runner hard-asserts
-    # `ubuntu-24.04` when adding its resolute apt source, so a 26.04 runner
-    # fails that step. Renovate is held below 26.04 in renovate.json too.
-    runs-on: ubuntu-24.04
+    # The Asahi Remix base is ARM64, so build on a native ARM64 runner. The
+    # setup-runner action supports Ubuntu 24.04; Renovate is held below 26.04.
+    runs-on: ubuntu-24.04-arm
     timeout-minutes: 360
     permissions:
       contents: read

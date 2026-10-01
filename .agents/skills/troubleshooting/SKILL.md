@@ -26,6 +26,7 @@ CI runs the same checks; running them locally only makes the pull request quiet.
 | `bootc container lint` fails on a nonempty `/run` | a script wrote to `/run` into an image layer | remove it in `90-cleanup.sh`; that phase deliberately does not mount `/run` as tmpfs |
 | a third-party repository is live in the final image | a script enabled it and did not disable it | use `copr_install_isolated`, or disable it explicitly |
 | the package layer rebuilds on every overlay edit | packages drifted into the overlay phase | keep packages in `20-packages-and-services.sh` |
+| `image platform ... does not match` followed by `/bin/sh: Exec format error` | the base image architecture differs from the builder | use a native runner for the base architecture, or configure emulation and explicitly target that platform |
 | hadolint flags the Containerfile | a rule in `.github/hadolint.yaml` | fix it, or add a suppression with a reason |
 
 ## CI
