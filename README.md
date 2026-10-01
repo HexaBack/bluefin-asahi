@@ -1,3 +1,5 @@
+# Archived, since I don't have the time to deal with this right now. Might unarchive later
+
 # finpilot
 
 A template for building your own bootc operating system image, assembled the
